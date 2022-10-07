@@ -1,24 +1,37 @@
-# README
+# Learning rails 7.0.4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Model
 
-Things you may want to cover:
+### Concern
 
-* Ruby version
+- `extend ActiveSupport::Concern`
+- validation in concern
 
-* System dependencies
+    ```ruby
+    included do
+      validates :status, inclusion: { in: VALID_STATUSES }
+    end
+    ```
+  
+- `class_method`
 
-* Configuration
+    ```ruby
+      class_methods do
+        def public_count
+          where(status: 'public').count
+        end
+      end
+    ```
+- 
 
-* Database creation
+## View
 
-* Database initialization
+- Datetime
+  - `distance_of_time_in_words(Time.now, Time.now + 15.seconds)`
+  - `time_ago_in_words(3.minutes.from_now)`
 
-* How to run the test suite
+## Controller
 
-* Services (job queues, cache servers, search engines, etc.)
+- Basic authentication
+  - `http_basic_authenticate_with name: "tai", password: "secret", only: :destroy`
 
-* Deployment instructions
-
-* ...

@@ -12,4 +12,7 @@
       div
         = message
   div
+    = form.label :status
+    = form.select :status, Article::VALID_STATUSES, selected: 'public'
+  div
     = form.submit

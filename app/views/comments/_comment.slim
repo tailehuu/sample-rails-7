@@ -1,6 +1,14 @@
-p
-  strong Commenter:
-  = comment.commenter
+- unless comment.archived?
+  p
+    strong Commenter:
+    = comment.commenter
   p
     strong Comment:
     = comment.body
+  p
+    strong Created_at:
+    = distance_of_time_in_words(comment.created_at, Time.now, include_seconds: true)
+  p
+    = link_to "Destroy Comment",
+            [comment.article, comment],
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }

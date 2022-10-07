@@ -6,4 +6,7 @@
     = form.label :body
     = form.text_area :body
   div
+    = form.label :status
+    = form.select :status, Comment::VALID_STATUSES, selected: 'public'
+  div
     = form.submit
