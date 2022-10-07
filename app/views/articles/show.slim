@@ -11,3 +11,9 @@ ul
     = link_to 'Destroy',
             article_path(@article),
             data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+
+h2 Comments
+= render @article.comments
+
+h2 Add a comment:
+= render 'comments/form'
