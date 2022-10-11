@@ -34,7 +34,57 @@
     - `rails db:drop`
     - `rails db:reset`
     - `rails db:schema:load RAILS_ENV=test`
-- Active Record Validations
+  - Active Record Validations
+    - Sample
+    
+      ```ruby
+      class Person < ApplicationRecord
+        validates :name, presence: true
+      end
+      ```
+    
+    - Validation will be triggered when call `save`, `save!`, `create`, `create!`, `update`, `update!`
+    - Will NOT be triggered on `insert`, `update_all`, `update_attribute`, `update_column`, `save(validation: false)` ...
+    - Validation helpers
+      - `:on` option
+        - `validates :name, presense: true, on: :create`
+        - `validates :name, presense: true, on: :update`
+      - `acceptance`
+      - `validates_associated`: trigger validation on associated model as well
+      - `confirmation`
+        - `case_sensitive` option `validates :email, confirmation: { case_sensitive: false }`
+      - `comparison`: 
+        - `validates :start_date, comparison: { greater_than: :end_date }`
+        - `validates :start_date, comparison: { greater_than_or_equal_to: :end_date }`
+        - `validates :start_date, comparison: { less_than: :end_date }`
+        - `validates :start_date, comparison: { less_than_or_equal_to: :end_date }`
+        - `validates :amount, comparison: { other_than: 12 }`
+      - `exclusion`
+      - `inclusion`
+      - `format`
+      - `length`
+      - `numericality`
+      - `presense`
+      - `inverse_of`
+      - `absence`
+      - `uniqueness`
+      - `validates_with`
+      - `validates_each`
+      - common options: `allow_nil`, `allow_blank`, `message` ...
+      - errors
+        - `.errors.full_messages`
+        - `.errors.where(:attribute)`
+        
+        ```ruby
+          article = Article.new.valid?
+          error = article.errors.where(:attribute).last
+          puts error.attribute
+          puts error.name
+          puts error.message
+          puts error.full_message
+        ```
+        - ``
+
 - Active Record Callbacks
 - Active Record Associations
 
