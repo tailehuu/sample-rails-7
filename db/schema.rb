@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_07_071141) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_042942) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "books_count", default: 0
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.integer "author_id"
+    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -29,5 +44,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_07_071141) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "manager_id"
+    t.index ["manager_id"], name: "index_employees_on_manager_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "name"
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "books", "authors"
   add_foreign_key "comments", "articles"
+  add_foreign_key "employees", "employees", column: "manager_id"
 end

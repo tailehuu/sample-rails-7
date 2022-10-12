@@ -119,6 +119,20 @@
     - `after_destroy_commit`
     - `after_save_commit` = `after_create_commit` + `after_update_commit`
 - Active Record Associations
+  - belongs_to
+  - has_one
+  - has_many
+  - has_one :through
+  - has_many :through
+  - has_and_belongs_to_many
+  - `polymorphic` associations
+  - Association callbacks
+    - before_add
+    - after_add
+    - before_remove
+    - after_remove
+  - Single Table Inheritance - STI
+    - 
 
 ### Concern
 
