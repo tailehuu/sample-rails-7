@@ -136,6 +136,33 @@
     - `rails g model car --parent=vehicle`
     - `rails g model bicycle --parent=vehicle`
     - `rails g model motocycle --parent=vehicle`
+- Active Record Query Interface
+  - .find(id), .find(id1, id2), .find([id1, id2])
+  - .find_by(name: '123')
+  - .take, .take 3
+  - .first, .first 3
+  - .last, .last 3
+  - .all
+  - batch processing: .find_each, .find_in_batches
+  - `Book.where(id: 123)`
+  - NOT condition: `Book.where.not(id: 123)`
+  - OR condition: `Book.where(id: 123).or(Book.where(id: 456))`
+  - Book.order(:created_at), Book.order(created_at: :desc)
+  - unscope, reselect, reorder, reverse_order, rewhere
+  - `Book.none`
+  - `Book.readonly.first`
+  - LOCKING!!
+  - Book.includes(:author).limit(10) vs Book.preload(:author).limit(10) vs Book.eager_load(:author).limit(10)
+  - find_or_create_by
+  - find_or_initialize_by
+  - find_by_sql
+  - Book.ids
+  - Calculation:
+    - Order.count
+    - Order.average('price')
+    - Order.minimum('price')
+    - Order.maximum('price')
+    - Order.sum('price')
 
 ### Concern
 
