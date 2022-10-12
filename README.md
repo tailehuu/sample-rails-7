@@ -132,7 +132,10 @@
     - before_remove
     - after_remove
   - Single Table Inheritance - STI
-    - 
+    - `rails g model vehicle type color price:decimal{10.2}`
+    - `rails g model car --parent=vehicle`
+    - `rails g model bicycle --parent=vehicle`
+    - `rails g model motocycle --parent=vehicle`
 
 ### Concern
 
