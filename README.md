@@ -197,3 +197,9 @@
 - Basic authentication
   - `http_basic_authenticate_with name: "tai", password: "secret", only: :destroy`
 
+## Rails Command Line
+
+- rails new my-app --database=postgresql
+- rails notes
+- rails about
+- ...

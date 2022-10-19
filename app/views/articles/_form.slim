@@ -14,5 +14,14 @@
   div
     = form.label :status
     = form.select :status, Article::VALID_STATUSES, selected: 'public'
+
+  div
+    = form.label :time_zone
+    = form.time_zone_select :time_zone
+  div
+    = form.label :date_select
+    = form.date_select :date_select
+
+
   div
     = form.submit
