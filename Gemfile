@@ -76,4 +76,4 @@ end
 # format template with Slim
 gem "slim-rails"
 
-
+gem 'friendly_id', '~> 5.4.0'
